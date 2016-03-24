@@ -1,4 +1,3 @@
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <cstdlib>
@@ -56,10 +55,15 @@ int Tile::loadImages(void)
 // main game loop
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1024, 768), "RPG");
+    sf::RenderWindow window(sf::VideoMode(GAME_WIDTH, GAME_HEIGHT), "RPG");
     sf::RectangleShape background = sf::RectangleShape(sf::Vector2<float>(GAME_WIDTH, GAME_HEIGHT));
 
     std::srand(std::time(0));
+    
+    sf::RectangleShape player; 
+    player.setSize(sf::Vector2f(BLOCK_SIZE,BLOCK_SIZE));
+    player.setFillColor(sf::Color::Blue);
+
 
 
     sf::Vector2<int> moveVector;
@@ -109,6 +113,7 @@ int main()
             }
 
 
+            window.draw(player);
             window.display();
         }
 
